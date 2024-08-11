@@ -1,27 +1,25 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Daten aus dem Formular erfassen
+    // Formulardaten abrufen
     $name = htmlspecialchars($_POST['name']);
     $email = htmlspecialchars($_POST['email']);
     $message = htmlspecialchars($_POST['message']);
 
-    // E-Mail-Einstellungen
-    $to = "altekxsk@outlook.de"; // Ersetzen Sie dies mit Ihrer E-Mail-Adresse
-    $subject = "Kontaktformular Nachricht von $name";
+    // E-Mail an die Zieladresse senden
+    $to = "altekxsk@outlook.de"; // Ziel-E-Mail-Adresse
+    $subject = "Neue Nachricht von der Webseite";
+    
+    $body = "Name: $name\n";
+    $body .= "E-Mail: $email\n";
+    $body .= "Nachricht:\n$message";
+
     $headers = "From: $email\r\n";
     $headers .= "Reply-To: $email\r\n";
-    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-
-    // Nachricht erstellen
-    $email_body = "Name: $name\n";
-    $email_body .= "E-Mail: $email\n\n";
-    $email_body .= "Nachricht:\n$message\n";
-
-    // E-Mail senden
-    if (mail($to, $subject, $email_body, $headers)) {
-        echo "Vielen Dank für Ihre Nachricht. Wir werden uns so schnell wie möglich bei Ihnen melden.";
+    
+    if (mail($to, $subject, $body, $headers)) {
+        echo "Nachricht erfolgreich gesendet.";
     } else {
-        echo "Es gab ein Problem beim Senden Ihrer Nachricht. Bitte versuchen Sie es später erneut.";
+        echo "Fehler beim Senden der Nachricht.";
     }
 }
 ?>
