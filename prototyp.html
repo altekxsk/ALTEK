@@ -115,17 +115,19 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
 
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background-color: #000;
-            color: #fff;
-            width: 100%;
-            position: relative;
-            z-index: 2;
-            margin-top: -35px; /* Schwarzer Balken rückt näher an das Leuchtturmbild */
-            bottom: 0;
-        }
+     footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: #000;
+    color: #fff;
+    width: 100%; /* Stellen Sie sicher, dass der Footer 100% der Breite einnimmt */
+    position: relative;
+    z-index: 2;
+    margin-top: -35px; /* Schwarzer Balken rückt näher an das Leuchtturmbild */
+    bottom: 0;
+    box-sizing: border-box; /* Stellt sicher, dass Padding und Border zur Gesamtbreite hinzugefügt werden */
+}
+
         @media (max-width: 768px) {
             .content {
                 padding: 1rem;
